@@ -1,0 +1,35 @@
+com/bluechilli/flutteruploader/plugin/StatusListener.java
+ com.bluechilli.flutteruploader.plugin.StatusListener
+com/bluechilli/flutteruploader/plugin/CachingStreamHandler.java
+ com.bluechilli.flutteruploader.plugin.CachingStreamHandler
+com/bluechilli/flutteruploader/UploadExecutorService.java
+ com.bluechilli.flutteruploader.UploadExecutorService
+com/bluechilli/flutteruploader/CountingRequestBody.java
+ com.bluechilli.flutteruploader.CountingRequestBody
+ com.bluechilli.flutteruploader.CountingRequestBody$CountingSink
+com/bluechilli/flutteruploader/MethodCallHandlerImpl.java
+ com.bluechilli.flutteruploader.MethodCallHandlerImpl
+com/bluechilli/flutteruploader/plugin/UploadObserver.java
+ com.bluechilli.flutteruploader.plugin.UploadObserver
+ com.bluechilli.flutteruploader.plugin.UploadObserver$1
+ com.bluechilli.flutteruploader.plugin.UploadObserver$2
+com/bluechilli/flutteruploader/SharedPreferenceHelper.java
+ com.bluechilli.flutteruploader.SharedPreferenceHelper
+com/bluechilli/flutteruploader/FlutterUploaderInitializer.java
+ com.bluechilli.flutteruploader.FlutterUploaderInitializer
+com/bluechilli/flutteruploader/UploadWorker.java
+ com.bluechilli.flutteruploader.UploadWorker
+ com.bluechilli.flutteruploader.UploadWorker$1
+ com.bluechilli.flutteruploader.UploadWorker$2
+com/bluechilli/flutteruploader/UploadTask.java
+ com.bluechilli.flutteruploader.UploadTask
+com/bluechilli/flutteruploader/BuildConfig.java
+ com.bluechilli.flutteruploader.BuildConfig
+com/bluechilli/flutteruploader/FileItem.java
+ com.bluechilli.flutteruploader.FileItem
+com/bluechilli/flutteruploader/UploadStatus.java
+ com.bluechilli.flutteruploader.UploadStatus
+com/bluechilli/flutteruploader/FlutterUploaderPlugin.java
+ com.bluechilli.flutteruploader.FlutterUploaderPlugin
+com/bluechilli/flutteruploader/CountProgressListener.java
+ com.bluechilli.flutteruploader.CountProgressListener

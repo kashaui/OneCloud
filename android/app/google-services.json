@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "846163980809",
+    "project_id": "onecloud-9d31a",
+    "storage_bucket": "onecloud-9d31a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846163980809:android:92b61b3d26375dae34fed8",
+        "android_client_info": {
+          "package_name": "com.kasha.onecloud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846163980809-m7sida4snsipu6ptopv4dt61s5m9pnrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAme54wGiWECWDRQxRvMv34WJpWuY9dTeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846163980809-m7sida4snsipu6ptopv4dt61s5m9pnrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
