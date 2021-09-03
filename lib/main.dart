@@ -38,53 +38,51 @@ void appRunner(AppConfig appConfig) async {
   await preferences.init();
   initBackgroundFetch();
 
-  runApp(
-      MultiProvider(
-        providers: [
-          Provider.value(value: httpClient),
-          Provider.value(value: appConfig),
-          Provider.value(value: localStorage),
-          Provider.value(value: notifications),
-          ChangeNotifierProvider.value(value: authState),
-          ChangeNotifierProvider.value(value: preferences),
-          ChangeNotifierProvider(create: (_) => SpaceUsageState(httpClient)),
-          Provider(create: (context) => FileEntriesApi(httpClient, localStorage)),
-          Provider(create: (context) => DownloadManager(
-            context.read<FileEntriesApi>(),
-            notifications,
-          )),
-          Provider(create: (context) => UploadManager(
-            context.read<FileEntriesApi>(),
-            notifications,
-          )),
-          ChangeNotifierProvider(create: (context) => TransferQueue(
-            context.read<Notifications>(),
-            context.read<DownloadManager>(),
-            context.read<UploadManager>(),
-            localStorage,
-          )),
-          Provider(create: (context) => EntryCache(localStorage, authState.currentUser)),
-          ChangeNotifierProvider(create: (context) => OfflinedEntries(
-            context.read<FileEntriesApi>(),
-            context.read<TransferQueue>(),
-          )),
-          ChangeNotifierProvider(create: (context) => FilePreviewState(
-              context.read<OfflinedEntries>(),
-              localStorage,
-              context.read<FileEntriesApi>()
-          )),
-          Provider(create: (_) => DestinationPickerState()),
-          ChangeNotifierProvider(
-              create: (context) => DriveState(
+  runApp(MultiProvider(
+    providers: [
+      Provider.value(value: httpClient),
+      Provider.value(value: appConfig),
+      Provider.value(value: localStorage),
+      Provider.value(value: notifications),
+      ChangeNotifierProvider.value(value: authState),
+      ChangeNotifierProvider.value(value: preferences),
+      ChangeNotifierProvider(create: (_) => SpaceUsageState(httpClient)),
+      Provider(create: (context) => FileEntriesApi(httpClient, localStorage)),
+      Provider(
+          create: (context) => DownloadManager(
+                context.read<FileEntriesApi>(),
+                notifications,
+              )),
+      Provider(
+          create: (context) => UploadManager(
+                context.read<FileEntriesApi>(),
+                notifications,
+              )),
+      ChangeNotifierProvider(
+          create: (context) => TransferQueue(
+                context.read<Notifications>(),
+                context.read<DownloadManager>(),
+                context.read<UploadManager>(),
+                localStorage,
+              )),
+      Provider(create: (context) => EntryCache(localStorage, authState.currentUser)),
+      ChangeNotifierProvider(
+          create: (context) => OfflinedEntries(
+                context.read<FileEntriesApi>(),
+                context.read<TransferQueue>(),
+              )),
+      ChangeNotifierProvider(create: (context) => FilePreviewState(context.read<OfflinedEntries>(), localStorage, context.read<FileEntriesApi>())),
+      Provider(create: (_) => DestinationPickerState()),
+      ChangeNotifierProvider(
+          create: (context) => DriveState(
                 api: context.read<FileEntriesApi>(),
                 entryCache: context.read<EntryCache>(),
                 offlinedEntriesDB: context.read<OfflinedEntries>(),
                 transferQueue: context.read<TransferQueue>(),
               ))
-        ],
-        child: MyApp(appConfig: appConfig, authState: authState),
-      )
-  );
+    ],
+    child: MyApp(appConfig: appConfig, authState: authState),
+  ));
 }
 
 void main() async {
@@ -96,7 +94,7 @@ void main() async {
       (options) {
         options.dsn = appConfig.localConfig.sentryDsn;
       },
-        // Init your App.
+      // Init your App.
       appRunner: () => appRunner(appConfig),
     );
   } else {
@@ -117,7 +115,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     final selectedTheme = context.select((PreferenceState s) => s.themeMode);
-    return  MaterialApp(
+    return MaterialApp(
       navigatorObservers: [
         SentryNavigatorObserver(),
       ],
@@ -140,18 +138,17 @@ class MyApp extends StatelessWidget {
 }
 
 initBackgroundFetch() async {
-  await BackgroundFetch.configure(BackgroundFetchConfig(
-    requiresDeviceIdle: true,
-    minimumFetchInterval: 1440,
-  ), (String taskId) async {
+  await BackgroundFetch.configure(
+      BackgroundFetchConfig(
+        requiresDeviceIdle: true,
+        minimumFetchInterval: 1440,
+      ), (String taskId) async {
     final sendPort = IsolateNameServer.lookupPortByName(OfflinedEntries.syncTaskName);
     try {
       sendPort.send(OfflinedEntries.syncTaskName);
-    } catch(_) {}
+    } catch (_) {}
     BackgroundFetch.finish(taskId);
   }, (String taskId) async {
     BackgroundFetch.finish(taskId);
   });
 }
-
-
